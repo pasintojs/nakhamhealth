@@ -1,0 +1,67 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle with light mint border -->
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#a7f3d0" stroke-width="2"/>
+  
+  <!-- Inner circle with dark blue border -->
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#1e40af" stroke-width="3"/>
+  
+  <!-- Center white circle -->
+  <circle cx="60" cy="60" r="35" fill="white"/>
+  
+  <!-- Golden pagoda/stupa in center -->
+  <g transform="translate(60, 60)">
+    <!-- Base platform -->
+    <ellipse cx="0" cy="15" rx="20" ry="4" fill="#d4af37"/>
+    <ellipse cx="0" cy="12" rx="18" ry="3" fill="#f4e16d"/>
+    
+    <!-- Main dome -->
+    <ellipse cx="0" cy="5" rx="15" ry="8" fill="#e5c659"/>
+    <ellipse cx="0" cy="2" rx="13" ry="6" fill="#f4e16d"/>
+    
+    <!-- Middle section -->
+    <ellipse cx="0" cy="-5" rx="10" ry="5" fill="#e5c659"/>
+    <ellipse cx="0" cy="-7" rx="8" ry="3" fill="#f4e16d"/>
+    
+    <!-- Top spire -->
+    <ellipse cx="0" cy="-12" rx="5" ry="3" fill="#d4af37"/>
+    <ellipse cx="0" cy="-15" rx="3" ry="2" fill="#f4e16d"/>
+    
+    <!-- Top point -->
+    <circle cx="0" cy="-18" r="1.5" fill="#d4af37"/>
+    <circle cx="0" cy="-20" r="0.8" fill="#f4e16d"/>
+  </g>
+  
+  <!-- Decorative elements around the circle -->
+  <g transform="translate(60, 60)">
+    <!-- Left lotus -->
+    <g transform="translate(-35, 0) scale(0.6)">
+      <path d="M-5,-5 Q0,-10 5,-5 Q0,0 -5,-5" fill="#f59e0b"/>
+      <path d="M-3,-3 Q0,-7 3,-3 Q0,1 -3,-3" fill="#fbbf24"/>
+    </g>
+    
+    <!-- Right lotus -->
+    <g transform="translate(35, 0) scale(0.6)">
+      <path d="M-5,-5 Q0,-10 5,-5 Q0,0 -5,-5" fill="#f59e0b"/>
+      <path d="M-3,-3 Q0,-7 3,-3 Q0,1 -3,-3" fill="#fbbf24"/>
+    </g>
+  </g>
+  
+  <!-- Thai text around the circle -->
+  <defs>
+    <path id="circle-path" d="M 60,60 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"/>
+  </defs>
+  
+  <!-- Top text -->
+  <text font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#1e40af">
+    <textPath href="#circle-path" startOffset="25%">
+      โรงพยาบาลส่งเสริมสุขภาพตำบลนาคำ
+    </textPath>
+  </text>
+  
+  <!-- Bottom text -->
+  <text font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#1e40af">
+    <textPath href="#circle-path" startOffset="75%">
+      อำเภออุบลรัตน์ จังหวัดขอนแก่น
+    </textPath>
+  </text>
+</svg>

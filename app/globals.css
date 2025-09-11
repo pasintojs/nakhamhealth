@@ -20,3 +20,37 @@ body {
   font-family: var(--font-thai), var(--font-geist-sans), Arial, Helvetica,
     sans-serif;
 }
+
+/* Custom animations for logo */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Enhanced shadow and glow effects */
+.filter {
+  filter: drop-shadow(0 20px 25px rgb(0 0 0 / 0.15))
+    drop-shadow(0 8px 10px rgb(0 0 0 / 0.1));
+}
+
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.drop-shadow-2xl {
+  filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+}
+
+/* Gradient border utility */
+.border-gradient-to-r {
+  border-image: linear-gradient(to right, #0ea5e9, #10b981) 1;
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,12 +24,23 @@ export default function NavBar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-md bg-gradient-to-br from-sky-500 to-cyan-500 text-white grid place-items-center font-semibold shadow-sm text-xs">
-            รพ
+          <div className="relative">
+            <Image
+              src="/images/logo.png"
+              alt="โรงพยาบาลส่งเสริมสุขภาพตำบลนาคำ"
+              width={55}
+              height={55}
+              className="drop-shadow-sm hover:scale-105 transition-transform duration-200 rounded-full"
+            />
           </div>
-          <span className="font-semibold">
-            รพ.สต.นาคำ อ.อุบลรัตน์ จ.ขอนแก่น
-          </span>
+          <div className="flex flex-col">
+            <span className="font-bold text-slate-800 text-sm leading-tight">
+              รพ.สต.นาคำ
+            </span>
+            <span className="text-xs text-slate-600 leading-tight">
+              อ.อุบลรัตน์ จ.ขอนแก่น
+            </span>
+          </div>
         </div>
 
         {/* Desktop Navigation */}
