@@ -138,7 +138,7 @@ export default function HeroSection() {
               <div className="flex items-center gap-2">
                 <span className="h-3 w-3 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="font-medium">
-                  เปิดให้บริการ จันทร์-ศุกร์ 08:30-16:30
+                  เปิดให้บริการ จันทร์-อาทิตย์
                 </span>
               </div>
             </div>
