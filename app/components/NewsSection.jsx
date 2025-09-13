@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const newsItems = [
   {
@@ -140,9 +141,12 @@ export default function NewsSection() {
                   {item.description}
                 </p>
 
-                {/* Read more button */}
+                {/* Action buttons */}
                 <div className="flex items-center justify-between">
-                  <button className="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                  <Link
+                    href={`/news/${item.id}`}
+                    className="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-semibold text-sm group-hover:gap-3 transition-all duration-300"
+                  >
                     <span>อ่านเพิ่มเติม</span>
                     <svg
                       className="w-4 h-4"
@@ -157,7 +161,7 @@ export default function NewsSection() {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </button>
+                  </Link>
 
                   {/* Share button */}
                   <button className="p-2 rounded-full hover:bg-sky-50 text-slate-400 hover:text-sky-600 transition-colors duration-300">
@@ -183,7 +187,10 @@ export default function NewsSection() {
 
         {/* View all button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center gap-3 bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 hover:from-sky-600 hover:via-cyan-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+          <Link
+            href="/news"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 hover:from-sky-600 hover:via-cyan-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+          >
             <svg
               className="w-5 h-5"
               fill="none"
@@ -198,7 +205,7 @@ export default function NewsSection() {
               />
             </svg>
             ดูข่าวทั้งหมด
-          </button>
+          </Link>
         </div>
       </div>
     </section>

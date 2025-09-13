@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,10 +12,11 @@ export default function NavBar() {
   };
 
   const navItems = [
-    { href: "#services", label: "บริการของเรา" },
-    { href: "#about", label: "เกี่ยวกับเรา" },
-    { href: "#staff", label: "บุคลากร" },
-    { href: "#contact", label: "ติดต่อเรา" },
+    { href: "#services", label: "บริการของเรา", type: "scroll" },
+    { href: "#about", label: "เกี่ยวกับเรา", type: "scroll" },
+    { href: "/news", label: "ข่าวสาร", type: "link" },
+    { href: "#staff", label: "บุคลากร", type: "scroll" },
+    { href: "#contact", label: "ติดต่อเรา", type: "scroll" },
   ];
 
   return (
@@ -23,7 +25,7 @@ export default function NavBar() {
       <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400" />
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <div className="relative">
             <Image
               src="/images/logo.png"
@@ -35,26 +37,36 @@ export default function NavBar() {
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-slate-800 text-sm leading-tight">
-              รพ.สต.นาคำ
+              โรงพยาบาลส่งเสริมสุขภาพตำบลนาคำ
             </span>
             <span className="text-xs text-slate-600 leading-tight">
               อ.อุบลรัตน์ จ.ขอนแก่น
             </span>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="hover:text-sky-700 text-slate-700 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) =>
+            item.type === "link" ? (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="hover:text-sky-700 text-slate-700 transition-colors"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className="hover:text-sky-700 text-slate-700 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
 
         {/* Desktop CTA Button */}
@@ -97,16 +109,27 @@ export default function NavBar() {
       >
         <div className="bg-white/95 backdrop-blur border-t border-slate-200">
           <nav className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-3">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-slate-900 hover:text-sky-700 py-2 px-3 rounded-md hover:bg-slate-50 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.type === "link" ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-slate-900 hover:text-sky-700 py-2 px-3 rounded-md hover:bg-slate-50 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-slate-900 hover:text-sky-700 py-2 px-3 rounded-md hover:bg-slate-50 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              )
+            )}
             <div className="pt-2 border-t border-slate-200 mt-2">
               <a
                 href="#contact"

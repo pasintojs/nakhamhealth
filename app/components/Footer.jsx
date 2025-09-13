@@ -16,7 +16,9 @@ export default function Footer() {
               className="drop-shadow-sm rounded-full"
             />
             <div className="text-sm">
-              <div className="font-semibold text-slate-800">รพ.สต.นาคำ</div>
+              <div className="font-semibold text-slate-800">
+                โรงพยาบาลส่งเสริมสุขภาพตำบลนาคำ
+              </div>
               <div className="text-slate-600">อ.อุบลรัตน์ จ.ขอนแก่น</div>
               <div className="text-xs text-slate-500 mt-1">
                 ดูแลสุขภาพชุมชนด้วยใจ
