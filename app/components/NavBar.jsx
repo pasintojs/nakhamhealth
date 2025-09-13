@@ -15,7 +15,7 @@ export default function NavBar() {
     { href: "#services", label: "บริการของเรา", type: "scroll" },
     { href: "#about", label: "เกี่ยวกับเรา", type: "scroll" },
     { href: "/news", label: "ข่าวสาร", type: "link" },
-    { href: "#staff", label: "บุคลากร", type: "scroll" },
+    { href: "/staff", label: "บุคลากร", type: "link" },
     { href: "#contact", label: "ติดต่อเรา", type: "scroll" },
   ];
 
