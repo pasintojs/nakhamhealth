@@ -8,24 +8,39 @@ export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [isInfoDropdownOpen, setIsInfoDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const dropdownRef = useRef(null);
   const infoDropdownRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // Close dropdowns when menu is closed
-    if (isMenuOpen) {
-      setIsServicesDropdownOpen(false);
-      setIsInfoDropdownOpen(false);
-    }
   };
 
+  // Desktop dropdown toggles
   const toggleServicesDropdown = () => {
-    setIsServicesDropdownOpen(!isServicesDropdownOpen);
+    setIsServicesDropdownOpen((prev) => !prev);
   };
 
   const toggleInfoDropdown = () => {
-    setIsInfoDropdownOpen(!isInfoDropdownOpen);
+    setIsInfoDropdownOpen((prev) => !prev);
+  };
+
+  // Mobile dropdown toggles
+  const toggleMobileServices = () => {
+    setMobileServicesOpen((prev) => !prev);
+  };
+
+  const toggleMobileInfo = () => {
+    setMobileInfoOpen((prev) => !prev);
+  };
+
+  const handleNavigationClick = () => {
+    setIsMenuOpen(false);
+    setIsServicesDropdownOpen(false);
+    setIsInfoDropdownOpen(false);
+    setMobileServicesOpen(false);
+    setMobileInfoOpen(false);
   };
 
   // Close dropdown when clicking outside
@@ -130,9 +145,13 @@ export default function NavBar() {
                   ref={index === 1 ? dropdownRef : infoDropdownRef}
                 >
                   <button
-                    onClick={
-                      index === 1 ? toggleServicesDropdown : toggleInfoDropdown
-                    }
+                    onClick={() => {
+                      if (index === 1) {
+                        toggleServicesDropdown();
+                      } else {
+                        toggleInfoDropdown();
+                      }
+                    }}
                     className="relative font-medium text-slate-700 hover:text-white transition-all duration-300 py-3 px-6 rounded-lg flex items-center gap-1 group overflow-hidden"
                   >
                     <span className="relative z-10">{item.label}</span>
@@ -266,7 +285,7 @@ export default function NavBar() {
                   key={item.href}
                   href={item.href}
                   className="group relative text-slate-800 hover:text-sky-600 py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-sky-100/40 hover:via-cyan-100/40 hover:to-emerald-100/40 transition-all duration-300 font-medium shadow-sm hover:shadow-lg border border-transparent hover:border-white/30 backdrop-blur-sm"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleNavigationClick}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-center gap-3">
@@ -279,9 +298,9 @@ export default function NavBar() {
                   <button
                     onClick={() => {
                       if (index === 1) {
-                        toggleServicesDropdown();
+                        toggleMobileServices();
                       } else {
-                        toggleInfoDropdown();
+                        toggleMobileInfo();
                       }
                     }}
                     className="group relative text-slate-800 hover:text-sky-600 py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-sky-100/40 hover:via-cyan-100/40 hover:to-emerald-100/40 transition-all duration-300 font-medium shadow-sm hover:shadow-lg border border-transparent hover:border-white/30 backdrop-blur-sm w-full flex items-center justify-between"
@@ -293,8 +312,8 @@ export default function NavBar() {
                     </div>
                     <svg
                       className={`w-4 h-4 transition-transform duration-200 ${
-                        (index === 1 && isServicesDropdownOpen) ||
-                        (index === 2 && isInfoDropdownOpen)
+                        (index === 1 && mobileServicesOpen) ||
+                        (index === 2 && mobileInfoOpen)
                           ? "rotate-180"
                           : ""
                       }`}
@@ -314,8 +333,8 @@ export default function NavBar() {
                   {/* Mobile Dropdown Items */}
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      (index === 1 && isServicesDropdownOpen) ||
-                      (index === 2 && isInfoDropdownOpen)
+                      (index === 1 && mobileServicesOpen) ||
+                      (index === 2 && mobileInfoOpen)
                         ? "max-h-96 opacity-100"
                         : "max-h-0 opacity-0"
                     }`}
@@ -326,11 +345,7 @@ export default function NavBar() {
                           key={subItem.href}
                           href={subItem.href}
                           className="block text-slate-700 hover:text-sky-600 py-2 px-4 rounded-lg hover:bg-gradient-to-r hover:from-sky-50/40 hover:via-cyan-50/40 hover:to-emerald-50/40 transition-all duration-200 text-sm"
-                          onClick={() => {
-                            setIsMenuOpen(false);
-                            setIsServicesDropdownOpen(false);
-                            setIsInfoDropdownOpen(false);
-                          }}
+                          onClick={handleNavigationClick}
                         >
                           {subItem.label}
                         </Link>
@@ -343,7 +358,7 @@ export default function NavBar() {
                   key={item.href}
                   href={item.href}
                   className="group relative text-slate-800 hover:text-sky-600 py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-sky-100/40 hover:via-cyan-100/40 hover:to-emerald-100/40 transition-all duration-300 font-medium shadow-sm hover:shadow-lg border border-transparent hover:border-white/30 backdrop-blur-sm"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleNavigationClick}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-center gap-3">
@@ -357,7 +372,7 @@ export default function NavBar() {
               <a
                 href="/contact"
                 className="group flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 hover:from-sky-600 hover:via-cyan-600 hover:to-emerald-600 text-white px-3 py-3 font-medium w-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 border border-white/20 backdrop-blur-sm relative overflow-hidden text-sm max-w-full"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={handleNavigationClick}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                 <svg
