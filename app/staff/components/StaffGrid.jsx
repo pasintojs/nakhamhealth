@@ -96,7 +96,7 @@ const staffMembers = [
 
 export default function StaffGrid() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden mb-6">
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(16,185,129,0.05),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(59,130,246,0.05),transparent_50%)]" />

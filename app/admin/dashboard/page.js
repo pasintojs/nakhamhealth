@@ -181,6 +181,18 @@ export default function AdminDashboard() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">แดชบอร์ด</h1>
           <p className="text-slate-600">ภาพรวมของระบบจัดการเว็บไซต์</p>
+          {/* Test navigation button */}
+          <div className="mt-4">
+            <button
+              onClick={() => {
+                console.log("Testing navigation to /admin/users");
+                router.push("/admin/users");
+              }}
+              className="bg-sky-600 text-white px-4 py-2 rounded-lg hover:bg-sky-700 transition-colors"
+            >
+              ทดสอบไปหน้าจัดการผู้ใช้งาน
+            </button>
+          </div>
         </div>
 
         {/* Stats Cards */}

@@ -55,12 +55,12 @@ export default function AboutPage() {
                 <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full opacity-75 animate-premium-sparkle-delayed shadow-md"></div>
 
                 {/* Elegant light beams */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 pointer-events-none">
+                {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 pointer-events-none">
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-blue-400/50 to-transparent animate-premium-beam"></div>
                   <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0.5 h-12 bg-gradient-to-t from-indigo-400/50 to-transparent animate-premium-beam-delayed"></div>
                   <div className="absolute top-1/2 left-0 transform -translate-y-1/2 h-0.5 w-12 bg-gradient-to-r from-purple-400/50 to-transparent animate-premium-beam-horizontal"></div>
                   <div className="absolute top-1/2 right-0 transform -translate-y-1/2 h-0.5 w-12 bg-gradient-to-l from-blue-400/50 to-transparent animate-premium-beam-horizontal-delayed"></div>
-                </div>
+                </div> */}
               </div>
             </div>
 
