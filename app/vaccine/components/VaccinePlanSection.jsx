@@ -2,6 +2,22 @@
 
 import { useState, useEffect } from "react";
 
+// Thai month names
+const thaiMonths = [
+  "มกราคม",
+  "กุมภาพันธ์",
+  "มีนาคม",
+  "เมษายน",
+  "พฤษภาคม",
+  "มิถุนายน",
+  "กรกฎาคม",
+  "สิงหาคม",
+  "กันยายน",
+  "ตุลาคม",
+  "พฤศจิกายน",
+  "ธันวาคม",
+];
+
 // Vaccine schedule data in Thai
 const vaccineSchedule = {
   แรกเกิด: {
@@ -107,6 +123,7 @@ export default function VaccinePlanSection() {
       years,
       months,
       days,
+      birthDate: birth,
       displayAge:
         years > 0
           ? `${years} ปี ${months} เดือน`
@@ -116,7 +133,20 @@ export default function VaccinePlanSection() {
     };
   };
 
-  const analyzeVaccineStatus = (ageInDays) => {
+  const formatThaiDate = (date) => {
+    const day = date.getDate();
+    const month = thaiMonths[date.getMonth()];
+    const year = date.getFullYear() + 543; // Convert to Buddhist Era
+    return `${day} ${month} ${year}`;
+  };
+
+  const calculateVaccineDate = (birthDate, ageInDays) => {
+    const vaccineDate = new Date(birthDate);
+    vaccineDate.setDate(vaccineDate.getDate() + ageInDays);
+    return vaccineDate;
+  };
+
+  const analyzeVaccineStatus = (ageInDays, birthDate) => {
     const completed = [];
     const upcoming = [];
     const overdue = [];
@@ -124,10 +154,18 @@ export default function VaccinePlanSection() {
 
     Object.entries(vaccineSchedule).forEach(([period, data]) => {
       const daysUntilVaccine = data.ageInDays - ageInDays;
+      const vaccineDate = calculateVaccineDate(birthDate, data.ageInDays);
+      const formattedDate = formatThaiDate(vaccineDate);
 
       if (daysUntilVaccine < -30) {
         // More than 30 days overdue
-        completed.push({ period, ...data, status: "completed" });
+        completed.push({
+          period,
+          ...data,
+          status: "completed",
+          vaccineDate: formattedDate,
+          exactDate: vaccineDate,
+        });
       } else if (daysUntilVaccine <= -1) {
         // Past due
         overdue.push({
@@ -135,6 +173,8 @@ export default function VaccinePlanSection() {
           ...data,
           status: "overdue",
           daysOverdue: Math.abs(daysUntilVaccine),
+          vaccineDate: formattedDate,
+          exactDate: vaccineDate,
         });
       } else if (daysUntilVaccine <= 30) {
         // Due soon (within 30 days)
@@ -144,6 +184,8 @@ export default function VaccinePlanSection() {
             ...data,
             status: "next",
             daysUntil: daysUntilVaccine,
+            vaccineDate: formattedDate,
+            exactDate: vaccineDate,
           };
         }
         upcoming.push({
@@ -151,6 +193,8 @@ export default function VaccinePlanSection() {
           ...data,
           status: "upcoming",
           daysUntil: daysUntilVaccine,
+          vaccineDate: formattedDate,
+          exactDate: vaccineDate,
         });
       } else {
         // Future vaccines
@@ -159,6 +203,8 @@ export default function VaccinePlanSection() {
           ...data,
           status: "future",
           daysUntil: daysUntilVaccine,
+          vaccineDate: formattedDate,
+          exactDate: vaccineDate,
         });
       }
     });
@@ -172,7 +218,7 @@ export default function VaccinePlanSection() {
       setBabyAge(age);
 
       if (age && age.totalDays >= 0) {
-        const status = analyzeVaccineStatus(age.totalDays);
+        const status = analyzeVaccineStatus(age.totalDays, age.birthDate);
         setVaccineStatus(status);
       }
     }
@@ -241,17 +287,22 @@ export default function VaccinePlanSection() {
                 <h3 className="text-xl font-semibold mb-2">
                   {vaccineStatus.nextVaccine.period}
                 </h3>
-                <p className="text-blue-100 mb-3">
-                  {vaccineStatus.nextVaccine.daysUntil === 0
-                    ? "ถึงเวลาฉีดแล้ว!"
-                    : vaccineStatus.nextVaccine.daysUntil > 0
-                    ? `${formatDaysToReadable(
-                        vaccineStatus.nextVaccine.daysUntil
-                      )}`
-                    : `เลยมา ${Math.abs(
-                        vaccineStatus.nextVaccine.daysUntil
-                      )} วันแล้ว`}
-                </p>
+                <div className="mb-3">
+                  <p className="text-blue-100 text-lg font-medium">
+                    📅 วันที่ควรฉีด: {vaccineStatus.nextVaccine.vaccineDate}
+                  </p>
+                  <p className="text-blue-100">
+                    {vaccineStatus.nextVaccine.daysUntil === 0
+                      ? "ถึงเวลาฉีดแล้ว!"
+                      : vaccineStatus.nextVaccine.daysUntil > 0
+                      ? `${formatDaysToReadable(
+                          vaccineStatus.nextVaccine.daysUntil
+                        )}`
+                      : `เลยมา ${Math.abs(
+                          vaccineStatus.nextVaccine.daysUntil
+                        )} วันแล้ว`}
+                  </p>
+                </div>
                 <div className="space-y-2">
                   {vaccineStatus.nextVaccine.vaccines.map((vaccine, idx) => (
                     <div key={idx} className="bg-white/20 rounded p-3">
@@ -276,9 +327,14 @@ export default function VaccinePlanSection() {
                     <h3 className="text-xl font-semibold mb-2">
                       {item.period}
                     </h3>
-                    <p className="text-red-100 mb-3">
-                      เลยมา {item.daysOverdue} วันแล้ว
-                    </p>
+                    <div className="mb-3">
+                      <p className="text-red-100 text-lg font-medium">
+                        📅 วันที่ควรฉีด: {item.vaccineDate}
+                      </p>
+                      <p className="text-red-100">
+                        เลยมา {item.daysOverdue} วันแล้ว
+                      </p>
+                    </div>
                     <div className="space-y-2">
                       {item.vaccines.map((vaccine, vIdx) => (
                         <div key={vIdx} className="bg-white/20 rounded p-3">
@@ -310,6 +366,9 @@ export default function VaccinePlanSection() {
                     <h3 className="text-lg font-semibold text-slate-800 mb-2">
                       {item.period}
                     </h3>
+                    <p className="text-green-700 text-sm font-medium mb-2">
+                      📅 วันที่ฉีด: {item.vaccineDate}
+                    </p>
                     <div className="space-y-2">
                       {item.vaccines.map((vaccine, vIdx) => (
                         <div
@@ -348,9 +407,14 @@ export default function VaccinePlanSection() {
                       <h3 className="text-lg font-semibold text-slate-800 mb-2">
                         {item.period}
                       </h3>
-                      <p className="text-slate-600 mb-3">
-                        {formatDaysToReadable(item.daysUntil)}
-                      </p>
+                      <div className="mb-3">
+                        <p className="text-blue-600 text-sm font-medium">
+                          📅 วันที่ควรฉีด: {item.vaccineDate}
+                        </p>
+                        <p className="text-slate-600">
+                          {formatDaysToReadable(item.daysUntil)}
+                        </p>
+                      </div>
                       <div className="space-y-2">
                         {item.vaccines.map((vaccine, vIdx) => (
                           <div key={vIdx} className="bg-slate-50 rounded p-3">
