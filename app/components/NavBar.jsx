@@ -13,6 +13,11 @@ export default function NavBar() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    // Close dropdowns when menu is closed
+    if (isMenuOpen) {
+      setIsServicesDropdownOpen(false);
+      setIsInfoDropdownOpen(false);
+    }
   };
 
   const toggleServicesDropdown = () => {
@@ -272,9 +277,13 @@ export default function NavBar() {
               ) : item.type === "dropdown" ? (
                 <div key={item.label} className="space-y-2">
                   <button
-                    onClick={
-                      index === 1 ? toggleServicesDropdown : toggleInfoDropdown
-                    }
+                    onClick={() => {
+                      if (index === 1) {
+                        toggleServicesDropdown();
+                      } else {
+                        toggleInfoDropdown();
+                      }
+                    }}
                     className="group relative text-slate-800 hover:text-sky-600 py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-sky-100/40 hover:via-cyan-100/40 hover:to-emerald-100/40 transition-all duration-300 font-medium shadow-sm hover:shadow-lg border border-transparent hover:border-white/30 backdrop-blur-sm w-full flex items-center justify-between"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
