@@ -176,7 +176,7 @@ export default function CalendarPage() {
             </div>
 
             {/* Service Hours */}
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-emerald-200/50 p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-2xl">🌅</span>
@@ -200,7 +200,7 @@ export default function CalendarPage() {
                   13.00-16.30 น.
                 </p>
               </div>
-            </div>
+            </div> */}
 
             {/* Weekly Schedule */}
             <div className="grid lg:grid-cols-7 gap-4 mb-8">
