@@ -6,6 +6,39 @@
   --foreground: #0b1a2b; /* slightly deeper slate */
   --brand: #06b6d4; /* cyan-500 */
   --brand-600: #0891b2; /* cyan-600 */
+  --navbar-height: 72px; /* NavBar height */
+}
+
+/* Ensure proper viewport height on all devices */
+.h-screen {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for modern browsers */
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.max-h-screen {
+  max-height: 100vh;
+  max-height: 100dvh;
+}
+
+/* Hero section height accounting for navbar */
+.hero-height {
+  height: calc(100vh - var(--navbar-height));
+  height: calc(100dvh - var(--navbar-height));
+}
+
+.min-hero-height {
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100dvh - var(--navbar-height));
+}
+
+.max-hero-height {
+  max-height: calc(100vh - var(--navbar-height));
+  max-height: calc(100dvh - var(--navbar-height));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,8 +65,440 @@ body {
   }
 }
 
+@keyframes gradient-x {
+  0%,
+  100% {
+    transform: translateX(-50%);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(50%);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(16, 185, 129, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5),
+      0 0 60px rgba(16, 185, 129, 0.4);
+  }
+}
+
+/* Elegant logo animations */
+@keyframes elegant-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes elegant-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes elegant-breath {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes elegant-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.5;
+  }
+  33% {
+    transform: translateY(-3px) rotate(1deg);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translateY(2px) rotate(-1deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes elegant-lift {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.01);
+  }
+}
+
+@keyframes elegant-twinkle {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes elegant-twinkle-delayed {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes elegant-ray {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.5);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes elegant-ray-delayed {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.6);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes elegant-ray-slow {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes elegant-ray-slow-delayed {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.6);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scaleX(1);
+  }
+}
+
+/* Premium logo animations */
+@keyframes premium-aurora {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+    filter: blur(1px);
+  }
+  33% {
+    opacity: 0.6;
+    transform: scale(1.03) rotate(120deg);
+    filter: blur(0.5px);
+  }
+  66% {
+    opacity: 0.4;
+    transform: scale(0.98) rotate(240deg);
+    filter: blur(1.5px);
+  }
+}
+
+@keyframes premium-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes premium-breath {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes premium-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translateY(-4px) rotate(2deg);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translateY(3px) rotate(-1deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes premium-levitate {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.02);
+  }
+}
+
+@keyframes premium-sparkle {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes premium-sparkle-delayed {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes premium-beam {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.4);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleY(1.2);
+  }
+}
+
+@keyframes premium-beam-delayed {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.5);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes premium-beam-horizontal {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scaleX(1.2);
+  }
+}
+
+@keyframes premium-beam-horizontal-delayed {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scaleX(1.1);
+  }
+}
+
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-orbit {
+  animation: orbit 15s linear infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Elegant animation classes */
+.animate-elegant-pulse {
+  animation: elegant-pulse 6s ease-in-out infinite;
+}
+
+.animate-elegant-rotate {
+  animation: elegant-rotate 25s linear infinite;
+}
+
+.animate-elegant-breath {
+  animation: elegant-breath 8s ease-in-out infinite;
+}
+
+.animate-elegant-float {
+  animation: elegant-float 10s ease-in-out infinite;
+}
+
+.animate-elegant-lift {
+  animation: elegant-lift 7s ease-in-out infinite;
+}
+
+.animate-elegant-twinkle {
+  animation: elegant-twinkle 4s ease-in-out infinite;
+}
+
+.animate-elegant-twinkle-delayed {
+  animation: elegant-twinkle-delayed 4s ease-in-out infinite 2s;
+}
+
+.animate-elegant-ray {
+  animation: elegant-ray 5s ease-in-out infinite;
+}
+
+.animate-elegant-ray-delayed {
+  animation: elegant-ray-delayed 5s ease-in-out infinite 1.5s;
+}
+
+.animate-elegant-ray-slow {
+  animation: elegant-ray-slow 6s ease-in-out infinite;
+}
+
+.animate-elegant-ray-slow-delayed {
+  animation: elegant-ray-slow-delayed 6s ease-in-out infinite 2.5s;
+}
+
+/* Premium animation classes */
+.animate-premium-aurora {
+  animation: premium-aurora 12s ease-in-out infinite;
+}
+
+.animate-premium-rotate {
+  animation: premium-rotate 30s linear infinite;
+}
+
+.animate-premium-breath {
+  animation: premium-breath 9s ease-in-out infinite;
+}
+
+.animate-premium-float {
+  animation: premium-float 11s ease-in-out infinite;
+}
+
+.animate-premium-levitate {
+  animation: premium-levitate 8s ease-in-out infinite;
+}
+
+.animate-premium-sparkle {
+  animation: premium-sparkle 4.5s ease-in-out infinite;
+}
+
+.animate-premium-sparkle-delayed {
+  animation: premium-sparkle-delayed 4.5s ease-in-out infinite 2.2s;
+}
+
+.animate-premium-beam {
+  animation: premium-beam 6s ease-in-out infinite;
+}
+
+.animate-premium-beam-delayed {
+  animation: premium-beam-delayed 6s ease-in-out infinite 1.8s;
+}
+
+.animate-premium-beam-horizontal {
+  animation: premium-beam-horizontal 7s ease-in-out infinite;
+}
+
+.animate-premium-beam-horizontal-delayed {
+  animation: premium-beam-horizontal-delayed 7s ease-in-out infinite 3s;
+}
+
+/* Gradient animation class */
+.animate-gradient-x {
+  animation: gradient-x 3s ease-in-out infinite;
+}
+
+/* Enhanced border gradient utilities */
+.border-gradient-vibrant {
+  border-image: linear-gradient(
+      45deg,
+      rgba(59, 130, 246, 0.3),
+      rgba(6, 182, 212, 0.3),
+      rgba(16, 185, 129, 0.3)
+    )
+    1;
 }
 
 /* Enhanced shadow and glow effects */

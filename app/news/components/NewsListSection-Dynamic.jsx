@@ -69,14 +69,14 @@ export default function NewsListSection() {
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Page Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-lg rounded-full px-6 py-3 shadow-xl border-2 border-cyan-100 mb-6">
+          {/* <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-lg rounded-full px-6 py-3 shadow-xl border-2 border-cyan-100 mb-6">
             <div className="w-3 h-3 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full animate-pulse"></div>
             <span className="text-lg font-bold text-slate-800">
               ข่าวสารและกิจกรรม
             </span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-4">
-            ข่าวและกิจกรรมทั้งหมด
+          </div> */}
+          <h1 className="animate-pulse text-4xl pt-1 sm:text-5xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+            ข่าวสารและกิจกรรม
           </h1>
           <p className="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
             ติดตามข่าวสารและกิจกรรมต่างๆ ของโรงพยาบาลส่งเสริมสุขภาพตำบลนาคำ

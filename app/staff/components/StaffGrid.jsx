@@ -5,36 +5,75 @@ import Image from "next/image";
 const staffMembers = [
   {
     name: "นางเกตุกมล ทองภาพ",
-    role: "ผู้อำนวยการ รพ.สต.",
+    role: "ผู้อำนวยการโรงพยาบาลส่งเสริมสุขภาพตำบลนาคำ",
     img: "/images/1kkm.jpg",
-    specialties: ["บริหารงาน", "นโยบายสาธารณสุข", "การพัฒนาระบบ"],
+    specialties: [
+      "งานบริหาร",
+      "พัฒนายุทธศาสตร์สาธารณสุข",
+      "งานมาตรฐานหน่วยบริการ",
+      "งานพัฒนาบุคลากร/พัฒนาหน่วยบริการ",
+      "กองทุนหลักประกันสุขภาพ",
+      "สนับสนุนสุขภาพภาคประชาชน",
+    ],
     experience: "  ",
     description: "ผู้นำองค์กรด้วยวิสัยทัศน์และประสบการณ์อันยาวนาน",
-  },
-  {
-    name: "นางสาวนันทนา มงคล",
-    role: "พยาบาลวิชาชีพ",
-    img: "/images/1ntn.jpg",
-    specialties: ["การพยาบาล", "การดูแลผู้ป่วย", "การฉีดวัคซีน"],
-    experience: "  ",
-    description: "พยาบาลมืออาชีพที่ใส่ใจในการดูแลผู้ป่วยอย่างเป็นองค์รวม",
-  },
-  {
-    name: "นางศิริพร พรมสุวรรณ์",
-    role: "นักวิชาการสาธารณสุขปฏิบัติการ",
-    img: "/images/1srp.jpg",
-    specialties: ["ป้องกันโรค", "คัดกรองสุขภาพ", "การแพทย์ชุมชน"],
-    experience: "  ",
-    description: "ผู้เชี่ยวชาญด้านสาธารณสุขและการส่งเสริมสุขภาพชุมชน",
   },
   {
     name: "นางมณีวงศ์ ขามก้อน",
     role: "เจ้าพนักงานทันตสาธารณสุขชำนาญงาน",
     img: "/images/1mnv.jpg",
-    specialties: ["ทันตกรรม", "สุขภาพช่องปาก", "การป้องกันโรคฟัน"],
+    specialties: [
+      "งานทันตสาธารณสุข",
+      "งานบริหารเวชภัณฑ์",
+      "งานการแพทย์แผนไทยและแพทย์ทางเลือก",
+      "งานประกันสุขภาพถ้วนหน้า/ประกันสังคม",
+    ],
     experience: "  ",
     description: "ผู้เชี่ยวชาญด้านทันตกรรมและสุขภาพช่องปาก",
   },
+
+  {
+    name: "นางศิริพร พรมสุวรรณ์",
+    role: "นักวิชาการสาธารณสุขปฏิบัติการ",
+    img: "/images/1srp.jpg",
+    specialties: [
+      "ป้องกันโรค",
+      "คัดกรองสุขภาพ",
+      "งานคุ้มครองผู้บริโภคด้านสุขภาพ",
+      "งานอนามัยโรงเรียน",
+      "งานอาชีวอนามัยและอนามัยสิ่งแวดล้อม",
+      "ส่งเสริมสุขภาพผู้สูงอายุ",
+    ],
+    experience: "  ",
+    description: "ผู้เชี่ยวชาญด้านสาธารณสุขและการส่งเสริมสุขภาพชุมชน",
+  },
+  {
+    name: "นางสาวนันทนา มงคล",
+    role: "พยาบาลวิชาชีพ",
+    img: "/images/1ntn.jpg",
+    specialties: [
+      "งานรักษาพยาบาลและส่งเสริมสุขภาพ",
+      "งานป้องกันและควบคุมการติดเชื้อในสถานบริการ(IC)",
+      "งานอนามัยแม่และเด็ก",
+      "งานสุขภาพจิต",
+      "งานอุบัติเหตุและฉุกเฉิน(EMS)",
+    ],
+    experience: "  ",
+    description: "พยาบาลมืออาชีพที่ใส่ใจในการดูแลผู้ป่วยอย่างเป็นองค์รวม",
+  },
+  {
+    name: "นางเพ็ญณี จิตชาตรี",
+    role: "ผู้ช่วยเจ้าหน้าที่อนามัย",
+    img: "/images/11pn.jpg",
+    specialties: [
+      "งานความสะอาดเครื่องมือและปราศจากเชื้อ",
+      "งานบริการ",
+      "งานควบคุมโรคติดต่อและไม่ติดต่อ",
+    ],
+    experience: "  ",
+    description: "ผู้ช่วยงานบริการสาธารณสุข",
+  },
+
   {
     name: "นางสาวมินตรา ชาวัตร",
     role: "เจ้าพนักงานการเงินและบัญชี",
@@ -44,27 +83,20 @@ const staffMembers = [
     description:
       "เจ้าหน้าที่ธุรการที่มีความรู้ความสามารถในการจัดการเอกสารและประสานงาน",
   },
-  {
-    name: "นางเพ็ญณี จิตชาตรี",
-    role: "ผู้ช่วยเจ้าหน้าที่อนามัย",
-    img: "/images/1pn.jpg",
-    specialties: ["สุขาภิบาล", "อนามัยสิ่งแวดล้อม", "ควบคุมโรค"],
-    experience: "  ",
-    description: "ผู้ช่วยที่มีความรู้ความสามารถด้านอนามัยสิ่งแวดล้อม",
-  },
+
   {
     name: "นางสาววรรณดา ขามก้อน",
     role: "พนักงานบริการ",
-    img: "/images/1wd.jpg",
-    specialties: ["งานบริการ"],
+    img: "/images/11wd.jpg",
+    specialties: ["งานบริการ", "การต้อนรับ", "งานทั่วไป"],
     experience: "  ",
-    description: "ผู้ช่วยงานบริการทั่วไปในโรงพยาบาล",
+    description: "ผู้ช่วยงานบริการทั่วไป",
   },
 ];
 
 export default function StaffGrid() {
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(16,185,129,0.05),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(59,130,246,0.05),transparent_50%)]" />
@@ -81,62 +113,21 @@ export default function StaffGrid() {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative">
-        {/* Hero Section */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-lg rounded-full px-8 py-4 shadow-2xl border-2 border-cyan-100 mb-8 animate-fade-in">
-            <div className="w-4 h-4 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full animate-pulse"></div>
-            <span className="text-xl font-bold text-slate-800">
-              ทีมงานของเรา
+        {/* Page Header */}
+        <div className="text-center mb-16">
+          {/* <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-lg rounded-full px-6 py-3 shadow-xl border-2 border-cyan-100 mb-6">
+            <div className="w-3 h-3 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full animate-pulse"></div>
+            <span className="text-lg font-bold text-slate-800">
+              บุคลากรของเรา
             </span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-8 animate-fade-in-up">
-            บุคลากรผู้เชี่ยวชาญ
+          </div> */}
+          <h1 className="animate-pulse text-4xl pt-0 pb-5 sm:text-5xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+            บุคลากร
           </h1>
-
-          <p
-            className="text-slate-600 text-xl max-w-3xl mx-auto leading-relaxed animate-fade-in-up"
-            style={{ animationDelay: "0.2s" }}
-          >
+          <p className="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
             ทีมผู้เชี่ยวชาญด้านสุขภาพที่มีประสบการณ์และความเชี่ยวชาญในสาขาต่างๆ
             พร้อมให้บริการด้วยความใส่ใจและมาตรฐานสูงสุด
           </p>
-
-          <div className="mt-12 flex justify-center">
-            <div
-              className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-cyan-200/50 animate-fade-in-up"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <div className="flex items-center gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-bold bg-gradient-to-r from-sky-600 to-emerald-600 bg-clip-text text-transparent">
-                    {staffMembers.length}
-                  </div>
-                  <div className="text-slate-600 text-sm font-medium">
-                    ผู้เชี่ยวชาญ
-                  </div>
-                </div>
-                <div className="w-px h-12 bg-gradient-to-b from-sky-200 to-emerald-200"></div>
-                <div>
-                  <div className="text-3xl font-bold bg-gradient-to-r from-sky-600 to-emerald-600 bg-clip-text text-transparent">
-                    24/7
-                  </div>
-                  <div className="text-slate-600 text-sm font-medium">
-                    พร้อมให้บริการ
-                  </div>
-                </div>
-                <div className="w-px h-12 bg-gradient-to-b from-sky-200 to-emerald-200"></div>
-                <div>
-                  <div className="text-3xl font-bold bg-gradient-to-r from-sky-600 to-emerald-600 bg-clip-text text-transparent">
-                    100%
-                  </div>
-                  <div className="text-slate-600 text-sm font-medium">
-                    ได้รับใบอนุญาต
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Boss Section - Special Layout */}
@@ -253,7 +244,7 @@ export default function StaffGrid() {
               ></div>
             </div>
 
-            <div className="group bg-gradient-to-br from-white via-amber-50/30 to-orange-50/30 backdrop-blur-sm rounded-3xl shadow-2xl hover:shadow-3xl border-2 border-amber-200/50 overflow-hidden hover:-translate-y-6 transition-all duration-700 animate-fade-in-up hover-lift max-w-80 min-h-[42rem] relative">
+            <div className="group bg-gradient-to-br from-white via-amber-50/30 to-orange-50/30 backdrop-blur-sm rounded-3xl shadow-2xl hover:shadow-3xl border-2 border-amber-200/50 overflow-hidden hover:-translate-y-6 transition-all duration-700 animate-fade-in-up hover-lift w-150 min-h-[42rem] relative">
               {/* Special Boss Crown/Badge */}
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                 <div className="mt-8 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-xl flex items-center gap-2 animate-boss-badge">
@@ -338,7 +329,7 @@ export default function StaffGrid() {
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    ความเชี่ยวชาญ
+                    หน้าที่รับผิดชอบ
                   </h4>
                   <div className="flex flex-wrap gap-3 justify-center">
                     {staffMembers[0].specialties.map((specialty, idx) => (
@@ -386,7 +377,7 @@ export default function StaffGrid() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-lg rounded-full px-6 py-3 shadow-xl border-2 border-cyan-100 mb-4 animate-fade-in">
               <div className="w-3 h-3 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full animate-pulse"></div>
-              <span className="text-lg font-bold text-slate-800">ทีมงาน</span>
+              <span className="text-lg font-bold text-slate-800">บุคลากร</span>
             </div>
           </div>
 
@@ -460,7 +451,7 @@ export default function StaffGrid() {
                           d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      ความเชี่ยวชาญ
+                      หน้าที่รับผิดชอบ
                     </h4>
                     <div className="flex flex-wrap gap-2 justify-center">
                       {member.specialties.map((specialty, idx) => (
