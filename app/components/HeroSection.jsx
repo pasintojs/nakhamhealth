@@ -167,7 +167,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content overlay */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center z-10">
+      <div className="absolute inset-0 flex flex-col justify-start items-center z-10 pt-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
           {/* Content that changes with slides */}
           <div className="space-y-8">
