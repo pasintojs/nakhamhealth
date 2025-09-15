@@ -8,7 +8,7 @@ import { supabase } from "../../lib/supabase";
 
 export default function CalendarPage() {
   const [events, setEvents] = useState([]);
-  const [currentDate, setCurrentDate] = useState(() => new Date(2025, 8, 14)); // September 2025 (month is 0-indexed)
+  const [currentDate, setCurrentDate] = useState(() => new Date()); // Current month and year
   const [selectedDate, setSelectedDate] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -488,10 +488,15 @@ export default function CalendarPage() {
                 เดือนก่อน
               </button>
 
-              <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent text-center">
-                {monthNames[currentDate.getMonth()]}{" "}
-                {currentDate.getFullYear() + 543}
-              </h2>
+              <div className="text-center">
+                <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
+                  {monthNames[currentDate.getMonth()]}{" "}
+                  {currentDate.getFullYear() + 543}
+                </h2>
+                <p className="text-sm text-slate-600 mt-1">
+                  มีกิจกรรม {events.length} รายการในเดือนนี้
+                </p>
+              </div>
 
               <button
                 onClick={() => navigateMonth(1)}
@@ -700,24 +705,32 @@ export default function CalendarPage() {
             {events
               .filter((event) => {
                 const eventDate = new Date(event.event_date);
-                const today = new Date();
+                const currentDateStart = new Date(
+                  currentDate.getFullYear(),
+                  currentDate.getMonth(),
+                  1
+                );
                 console.log(
                   "Event date:",
                   eventDate,
-                  "Today:",
-                  today,
-                  "Future?",
-                  eventDate >= today
+                  "Current month start:",
+                  currentDateStart,
+                  "In range?",
+                  eventDate >= currentDateStart
                 );
-                return eventDate >= today;
+                return eventDate >= currentDateStart;
               })
               .slice(0, 5).length > 0 ? (
               <div className="space-y-4">
                 {events
                   .filter((event) => {
                     const eventDate = new Date(event.event_date);
-                    const today = new Date();
-                    return eventDate >= today;
+                    const currentDateStart = new Date(
+                      currentDate.getFullYear(),
+                      currentDate.getMonth(),
+                      1
+                    );
+                    return eventDate >= currentDateStart;
                   })
                   .slice(0, 5)
                   .map((event, index) => (
