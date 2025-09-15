@@ -103,16 +103,43 @@ const notes = [
 ];
 
 export default function VaccinePlanSection() {
-  const [birthDate, setBirthDate] = useState("");
+  const [birthDay, setBirthDay] = useState("");
+  const [birthMonth, setBirthMonth] = useState("");
+  const [birthYear, setBirthYear] = useState("");
   const [babyAge, setBabyAge] = useState(null);
   const [vaccineStatus, setVaccineStatus] = useState(null);
 
-  const calculateAge = (birthDateStr) => {
-    if (!birthDateStr) return null;
+  const calculateAge = (day, month, year) => {
+    if (!day || !month || !year) return null;
 
-    const birth = new Date(birthDateStr);
+    // Convert Buddhist Era year to Gregorian year
+    const gregorianYear = parseInt(year) - 543;
+    const dayInt = parseInt(day);
+    const monthInt = parseInt(month);
+
+    // Basic validation
+    if (gregorianYear < 1900 || gregorianYear > new Date().getFullYear())
+      return null;
+    if (monthInt < 1 || monthInt > 12) return null;
+    if (dayInt < 1 || dayInt > 31) return null;
+
+    // Create date and validate it's a real date
+    const birth = new Date(gregorianYear, monthInt - 1, dayInt);
+
+    // Check if the date is valid (handles things like Feb 30)
+    if (
+      birth.getDate() !== dayInt ||
+      birth.getMonth() !== monthInt - 1 ||
+      birth.getFullYear() !== gregorianYear
+    ) {
+      return null;
+    }
+
     const today = new Date();
     const ageInDays = Math.floor((today - birth) / (1000 * 60 * 60 * 24));
+
+    // Check if the birth date is in the future
+    if (ageInDays < 0) return null;
 
     const years = Math.floor(ageInDays / 365);
     const months = Math.floor((ageInDays % 365) / 30);
@@ -213,16 +240,19 @@ export default function VaccinePlanSection() {
   };
 
   useEffect(() => {
-    if (birthDate) {
-      const age = calculateAge(birthDate);
+    if (birthDay && birthMonth && birthYear) {
+      const age = calculateAge(birthDay, birthMonth, birthYear);
       setBabyAge(age);
 
       if (age && age.totalDays >= 0) {
         const status = analyzeVaccineStatus(age.totalDays, age.birthDate);
         setVaccineStatus(status);
       }
+    } else {
+      setBabyAge(null);
+      setVaccineStatus(null);
     }
-  }, [birthDate]);
+  }, [birthDay, birthMonth, birthYear]);
 
   const formatDaysToReadable = (days) => {
     if (days === 0) return "วันนี้";
@@ -248,28 +278,95 @@ export default function VaccinePlanSection() {
 
       {/* Date Input */}
       <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-        <div className="max-w-md mx-auto">
-          <label
-            htmlFor="birthDate"
-            className="block text-lg font-medium text-slate-700 mb-3"
-          >
+        <div className="max-w-2xl mx-auto">
+          <label className="block text-lg font-medium text-slate-700 mb-4">
             วันเกิดของลูกน้อย
           </label>
-          <input
-            type="date"
-            id="birthDate"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
-            className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
-            max={new Date().toISOString().split("T")[0]}
-          />
+
+          <div className="grid grid-cols-3 gap-4">
+            {/* Day Dropdown */}
+            <div>
+              <label className="block text-sm font-medium text-slate-600 mb-2">
+                วันที่
+              </label>
+              <select
+                value={birthDay}
+                onChange={(e) => setBirthDay(e.target.value)}
+                className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+              >
+                <option value="">เลือกวัน</option>
+                {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
+                  <option key={day} value={day}>
+                    {day}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Month Dropdown */}
+            <div>
+              <label className="block text-sm font-medium text-slate-600 mb-2">
+                เดือน
+              </label>
+              <select
+                value={birthMonth}
+                onChange={(e) => setBirthMonth(e.target.value)}
+                className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+              >
+                <option value="">เลือกเดือน</option>
+                {thaiMonths.map((month, index) => (
+                  <option key={index + 1} value={index + 1}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Year Dropdown (Buddhist Era) */}
+            <div>
+              <label className="block text-sm font-medium text-slate-600 mb-2">
+                ปี พ.ศ.
+              </label>
+              <select
+                value={birthYear}
+                onChange={(e) => setBirthYear(e.target.value)}
+                className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+              >
+                <option value="">เลือกปี</option>
+                {Array.from({ length: 10 }, (_, i) => {
+                  const currentBuddhistYear = new Date().getFullYear() + 543;
+                  const year = currentBuddhistYear - i;
+                  return (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          </div>
+
           {babyAge && (
-            <p className="mt-3 text-slate-600">
-              อายุปัจจุบัน:{" "}
-              <span className="font-semibold text-slate-800">
-                {babyAge.displayAge}
-              </span>
-            </p>
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <p className="text-slate-700">
+                <span className="font-medium">อายุปัจจุบัน:</span>{" "}
+                <span className="font-semibold text-blue-700">
+                  {babyAge.displayAge}
+                </span>
+              </p>
+              <p className="text-sm text-slate-600 mt-1">
+                วันเกิด: {birthDay}{" "}
+                {birthMonth && thaiMonths[parseInt(birthMonth) - 1]} {birthYear}
+              </p>
+            </div>
+          )}
+
+          {birthDay && birthMonth && birthYear && !babyAge && (
+            <div className="mt-4 p-4 bg-red-50 rounded-lg border border-red-200">
+              <p className="text-red-700">
+                ⚠️ วันที่ไม่ถูกต้อง กรุณาตรวจสอบข้อมูลอีกครั้ง
+              </p>
+            </div>
           )}
         </div>
       </div>
