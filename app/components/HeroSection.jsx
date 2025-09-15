@@ -13,7 +13,7 @@ const heroSlides = [
     description: "รพ.สต.นาคำ อ.อุบลรัตน์ จ.ขอนแก่น",
   },
   {
-    src: "/images/place7.jpg",
+    src: "/images/place9.jpg",
     alt: "บริการสุขภาพชุมชน",
     title: "บริการสุขภาพชุมชน",
     subtitle: "ดูแลสุขภาพประชาชนในพื้นที่ตำบลนาคำ",

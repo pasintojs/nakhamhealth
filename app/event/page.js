@@ -488,7 +488,9 @@ export default function CalendarPage() {
 
               <div className="text-center">
                 <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
-                  {monthNames[currentDate.getMonth()]}{" "}
+                  {"ตารางนัดหมายเดือน "}
+                  {monthNames[currentDate.getMonth()]}
+                  {" พ.ศ."}
                   {currentDate.getFullYear() + 543}
                 </h2>
                 <p className="text-sm text-slate-600 mt-1">
