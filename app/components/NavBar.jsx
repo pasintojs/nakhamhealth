@@ -72,6 +72,7 @@ export default function NavBar() {
         { href: "/services", label: "คลินิกสุขภาพ" },
         { href: "/procedure", label: "ขั้นตอนการรับบริการ" },
         { href: "/vaccine", label: "เช็ควัคซีนเด็ก" },
+        { href: "/baby-progress", label: "เช็คพัฒนาการเด็ก" },
         { href: "/bmi", label: "เช็คความอ้วน" },
       ],
     },
