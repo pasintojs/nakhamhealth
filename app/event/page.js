@@ -87,13 +87,11 @@ export default function CalendarPage() {
 
   const getEventsForDate = (day) => {
     if (!day) return [];
-    const dateString = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth(),
-      day
-    )
-      .toISOString()
-      .split("T")[0];
+    // Fix timezone issue: manually format date instead of using toISOString()
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const dayStr = String(day).padStart(2, "0");
+    const dateString = `${year}-${month}-${dayStr}`;
     return events.filter((event) => event.event_date === dateString);
   };
 
