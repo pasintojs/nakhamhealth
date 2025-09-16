@@ -28,10 +28,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="th">
+      <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${thaiSans.variable} antialiased`}
       >
         {children}
+
         {/* Emergency auth clearing script for development */}
         {process.env.NODE_ENV === "development" && (
           <Script src="/clear-auth.js" strategy="afterInteractive" />
