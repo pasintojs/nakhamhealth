@@ -44,12 +44,12 @@ export default function LoadingScreen({ onLoadingComplete }) {
         {/* Logo with pulse animation */}
         <div className="relative">
           <div className="absolute inset-0 animate-ping bg-blue-200 rounded-full opacity-30"></div>
-          <div className="relative w-32 h-32 md:w-40 md:h-40 animate-pulse">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-white/90 shadow-lg animate-pulse">
             <Image
               src="/images/logo-v3.png"
               alt="โรงพยาบาลส่งเสริมสุขภาพตำบลนาคำ"
               fill
-              className="object-contain filter drop-shadow-lg"
+              className="object-cover p-2"
               priority
             />
           </div>
