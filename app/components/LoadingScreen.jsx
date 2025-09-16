@@ -38,54 +38,52 @@ export default function LoadingScreen({ onLoadingComplete }) {
       {/* Background overlay with subtle pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(120,119,198,0.1),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(120,119,198,0.1),transparent_50%)]"></div>
 
-      {/* Loading content */}
-      <div className="relative flex flex-col items-center space-y-8">
-        {/* Animated medical cross icon */}
-        <div className="relative mb-4">
-          <div className="w-20 h-20 relative animate-pulse-slow">
+      {/* Loading content - Responsive container */}
+      <div className="relative flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 px-4 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+        {/* Responsive triangle icon */}
+        <div className="relative mb-2 sm:mb-4">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 relative animate-pulse-slow">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-green-500 rounded-full opacity-20 animate-ping"></div>
             <div className="relative w-full h-full bg-gradient-to-br from-blue-600 to-green-600 rounded-full flex items-center justify-center shadow-xl">
-              {/* Triangle */}
+              {/* Responsive Triangle */}
               <div className="relative">
-                <div className="w-0 h-0 border-l-[12px] border-r-[12px] border-b-[20px] border-l-transparent border-r-transparent border-b-white"></div>
+                <div className="w-0 h-0 border-l-[8px] border-r-[8px] border-b-[14px] sm:border-l-[10px] sm:border-r-[10px] sm:border-b-[17px] md:border-l-[12px] md:border-r-[12px] md:border-b-[20px] border-l-transparent border-r-transparent border-b-white"></div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Hospital name with typing animation */}
-        <div className="text-center space-y-3">
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent animate-gradient">
-            <span className="animate-type-writer">
+        {/* Responsive hospital name */}
+        <div className="text-center space-y-2 sm:space-y-3">
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent animate-gradient leading-tight">
+            <span className="block sm:inline">
               โรงพยาบาลส่งเสริมสุขภาพตำบลนาคำ
             </span>
           </h1>
-          <p className="text-xl text-gray-600 animate-fade-in-up">
-            <span className="animate-type-writer-delay">
-              อ.อุบลรัตน์ จ.ขอนแก่น
-            </span>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 animate-fade-in-up">
+            <span className="block">อ.อุบลรัตน์ จ.ขอนแก่น</span>
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-green-500 mx-auto rounded-full animate-expand"></div>
+          <div className="w-16 sm:w-20 md:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-blue-500 to-green-500 mx-auto rounded-full animate-expand"></div>
         </div>
 
-        {/* Enhanced loading animation */}
-        <div className="flex items-center space-x-3">
-          <div className="flex space-x-2">
-            <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-bounce-slow"></div>
+        {/* Responsive loading animation */}
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="flex space-x-1 sm:space-x-2">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-bounce-slow"></div>
             <div
-              className="w-3 h-3 bg-gradient-to-r from-purple-500 to-green-500 rounded-full animate-bounce-slow"
+              className="w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-purple-500 to-green-500 rounded-full animate-bounce-slow"
               style={{ animationDelay: "0.2s" }}
             ></div>
             <div
-              className="w-3 h-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-full animate-bounce-slow"
+              className="w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-full animate-bounce-slow"
               style={{ animationDelay: "0.4s" }}
             ></div>
           </div>
         </div>
 
-        {/* Loading text with pulse */}
-        <p className="text-gray-600 text-lg font-medium animate-pulse-text">
-          <span className="animate-dots">กำลังโหลด</span>
+        {/* Responsive loading text */}
+        <p className="text-sm sm:text-base md:text-lg font-medium text-gray-600 animate-pulse-text">
+          กำลังโหลด...
         </p>
       </div>
 
@@ -93,20 +91,11 @@ export default function LoadingScreen({ onLoadingComplete }) {
         @keyframes fade-in-up {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
             transform: translateY(0);
-          }
-        }
-
-        @keyframes type-writer {
-          from {
-            width: 0;
-          }
-          to {
-            width: 100%;
           }
         }
 
@@ -131,7 +120,6 @@ export default function LoadingScreen({ onLoadingComplete }) {
             opacity: 1;
           }
           100% {
-            width: 6rem;
             opacity: 1;
           }
         }
@@ -142,7 +130,7 @@ export default function LoadingScreen({ onLoadingComplete }) {
             transform: translateY(0);
           }
           50% {
-            transform: translateY(-12px);
+            transform: translateY(-8px);
           }
         }
 
@@ -153,8 +141,8 @@ export default function LoadingScreen({ onLoadingComplete }) {
             opacity: 1;
           }
           50% {
-            transform: scale(1.1);
-            opacity: 0.8;
+            transform: scale(1.05);
+            opacity: 0.9;
           }
         }
 
@@ -164,41 +152,12 @@ export default function LoadingScreen({ onLoadingComplete }) {
             opacity: 1;
           }
           50% {
-            opacity: 0.6;
-          }
-        }
-
-        @keyframes dots {
-          0%,
-          20% {
-            content: "กำลังโหลด";
-          }
-          40% {
-            content: "กำลังโหลด.";
-          }
-          60% {
-            content: "กำลังโหลด..";
-          }
-          80%,
-          100% {
-            content: "กำลังโหลด...";
+            opacity: 0.7;
           }
         }
 
         .animate-fade-in-up {
-          animation: fade-in-up 1s ease-out 0.5s both;
-        }
-
-        .animate-type-writer {
-          overflow: hidden;
-          white-space: nowrap;
-          animation: type-writer 2s steps(40) 0.5s both;
-        }
-
-        .animate-type-writer-delay {
-          overflow: hidden;
-          white-space: nowrap;
-          animation: type-writer 1.5s steps(30) 2s both;
+          animation: fade-in-up 1s ease-out 0.3s both;
         }
 
         .animate-gradient {
@@ -207,11 +166,11 @@ export default function LoadingScreen({ onLoadingComplete }) {
         }
 
         .animate-expand {
-          animation: expand 1s ease-out 3s both;
+          animation: expand 1.5s ease-out 0.8s both;
         }
 
         .animate-bounce-slow {
-          animation: bounce-slow 2s ease-in-out infinite;
+          animation: bounce-slow 1.8s ease-in-out infinite;
         }
 
         .animate-pulse-slow {
@@ -222,9 +181,17 @@ export default function LoadingScreen({ onLoadingComplete }) {
           animation: pulse-text 2s ease-in-out infinite;
         }
 
-        .animate-dots::after {
-          content: "";
-          animation: dots 2s infinite;
+        /* Mobile-specific adjustments */
+        @media (max-width: 640px) {
+          @keyframes bounce-slow {
+            0%,
+            100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-6px);
+            }
+          }
         }
       `}</style>
     </div>
