@@ -77,16 +77,16 @@ export default function NavBar() {
       ],
     },
     {
-      label: "ข้อมูลความรู้",
+      label: "ข้อมูล",
       type: "dropdown",
       items: [
         { href: "/news", label: "ข่าวสาร" },
         { href: "/knowledge", label: "ความรู้เพื่อสุขภาพ" },
       ],
     },
-    { href: "/event", label: "ตารางดำเนินงาน", type: "link" },
+    { href: "/event", label: "ตารางงาน", type: "link" },
     { href: "/staff", label: "บุคลากร", type: "link" },
-    { href: "/about", label: "เกี่ยวกับเรา", type: "link" },
+    { href: "/about", label: "เกี่ยวกับ", type: "link" },
   ];
 
   return (
@@ -243,7 +243,7 @@ export default function NavBar() {
                 d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
               />
             </svg>
-            <span className="relative z-10">ติดต่อเรา</span>
+            <span className="relative z-10">ติดต่อ</span>
           </a>
         </div>
 
